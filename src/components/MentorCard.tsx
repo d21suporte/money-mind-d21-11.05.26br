@@ -145,7 +145,7 @@ export function MentorCard() {
         <div className="min-w-0 flex-1">
           <p className="truncate text-sm font-bold leading-tight">{mentor.name}</p>
           <p className="flex items-center gap-1 truncate text-[11px] text-muted-foreground">
-            <BookOpen className="h-3 w-3" /> Cap. {currentDay} • {mentor.role}
+            <BookOpen className="h-3 w-3" /> Cap. {DAY_TO_CHAPTER[currentDay] ?? 1} • {mentor.role}
           </p>
         </div>
         <div className="flex shrink-0 items-center gap-1 rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-semibold text-primary">
