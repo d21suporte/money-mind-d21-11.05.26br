@@ -1,5 +1,5 @@
 import { MobileShell } from "@/components/MobileShell";
-import { JOURNEY_DAYS } from "@/data/journey";
+import { JOURNEY_DAYS, JOURNEY_EXTRA } from "@/data/journey";
 import { useJourney } from "@/hooks/useFinance";
 import { Check, Lock, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
