@@ -347,7 +347,7 @@ const MeuNegocio = () => {
                 image={catProdutos}
                 color="amber"
                 label="Produtos"
-                subtitle="Cadastre seus ativos de Produtos"
+                subtitle="Cadastro de Produtos"
                 tip="Produto com margem acima de 30% acelera sua liberdade financeira."
                 count={products.length}
                 countLabel="Ativos cadastrados"
@@ -359,7 +359,7 @@ const MeuNegocio = () => {
                 image={catServicos}
                 color="blue"
                 label="Serviços"
-                subtitle="Cadastre seus ativos de Serviços"
+                subtitle="Cadastro de Serviços"
                 tip="Serviços recorrentes geram renda previsível todos os meses."
                 count={services.length}
                 countLabel="Ativos cadastrados"
@@ -371,7 +371,7 @@ const MeuNegocio = () => {
                 image={catInfo}
                 color="violet"
                 label="Infoprodutos"
-                subtitle="Cadastre seus ativos de Infoprodutos"
+                subtitle="Cadastro de Infoprodutos"
                 tip="Infoproduto é escalável: vende enquanto você dorme."
                 count={infos.length}
                 countLabel="Ativos cadastrados"
@@ -383,7 +383,7 @@ const MeuNegocio = () => {
                 image={catVendas}
                 color="sales"
                 label="Vendas"
-                subtitle="Registre cada venda dos seus ativos"
+                subtitle="Cadastro de Vendas"
                 tip="Quem mede vende mais. Lance toda venda para ver o que funciona."
                 count={sales.filter((s) => s.status === "Pago").length}
                 countLabel="Vendas realizadas"
@@ -622,7 +622,7 @@ function CatCard({
 }) {
   const iconBtn =
     "flex h-7 w-7 items-center justify-center rounded-full text-muted-foreground hover:bg-muted";
-  const sub = subtitle ?? `Cadastre seus ativos de ${label}`;
+  const sub = subtitle ?? `Cadastro de ${label}`;
   return (
     <div className="relative rounded-2xl border border-border bg-card p-3 pl-3 shadow-soft">
       {/* Ações no canto superior direito */}
@@ -678,18 +678,18 @@ function CatCard({
         </DropdownMenu>
       </div>
 
-      <div className="flex gap-3">
+      <div className="flex items-start gap-3">
         {/* Imagem do ativo (quadrada com cantos arredondados, sombra projetada à direita) */}
         <button
           type="button"
           onClick={onOpen}
           aria-label={`Abrir ${label}`}
-          className="shrink-0 self-stretch"
+          className="shrink-0"
         >
           <img
             src={image}
             alt={label}
-            className="h-24 w-24 rounded-2xl object-cover shadow-[6px_4px_14px_-3px_rgba(0,0,0,0.5)] ring-1 ring-border"
+            className="block h-24 w-24 rounded-2xl object-cover shadow-[6px_4px_14px_-3px_rgba(0,0,0,0.5)] ring-1 ring-border"
           />
         </button>
 
