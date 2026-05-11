@@ -347,7 +347,7 @@ const MeuNegocio = () => {
                 image={catProdutos}
                 color="amber"
                 label="Produtos"
-                subtitle="Cadastre seus ativos de Produtos"
+                subtitle="Cadastro de Produtos"
                 tip="Produto com margem acima de 30% acelera sua liberdade financeira."
                 count={products.length}
                 countLabel="Ativos cadastrados"
@@ -359,7 +359,7 @@ const MeuNegocio = () => {
                 image={catServicos}
                 color="blue"
                 label="Serviços"
-                subtitle="Cadastre seus ativos de Serviços"
+                subtitle="Cadastro de Serviços"
                 tip="Serviços recorrentes geram renda previsível todos os meses."
                 count={services.length}
                 countLabel="Ativos cadastrados"
@@ -371,7 +371,7 @@ const MeuNegocio = () => {
                 image={catInfo}
                 color="violet"
                 label="Infoprodutos"
-                subtitle="Cadastre seus ativos de Infoprodutos"
+                subtitle="Cadastro de Infoprodutos"
                 tip="Infoproduto é escalável: vende enquanto você dorme."
                 count={infos.length}
                 countLabel="Ativos cadastrados"
@@ -383,7 +383,7 @@ const MeuNegocio = () => {
                 image={catVendas}
                 color="sales"
                 label="Vendas"
-                subtitle="Registre cada venda dos seus ativos"
+                subtitle="Cadastro de Vendas"
                 tip="Quem mede vende mais. Lance toda venda para ver o que funciona."
                 count={sales.filter((s) => s.status === "Pago").length}
                 countLabel="Vendas realizadas"
