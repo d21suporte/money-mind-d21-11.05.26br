@@ -2,18 +2,15 @@ import { MobileShell } from "@/components/MobileShell";
 import { JOURNEY_DAYS, JOURNEY_EXTRA } from "@/data/journey";
 import { useJourney } from "@/hooks/useFinance";
 import { Check, Lock, Target } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Day1Experience } from "@/components/Day1Experience";
+import { DayActionExperience } from "@/components/DayActionExperience";
 
 const Journey = () => {
-  const { isCompleted, toggleDay, progress } = useJourney();
+  const { isCompleted, progress } = useJourney();
   const [openDay, setOpenDay] = useState<number | null>(null);
   const percent = Math.round((progress / 21) * 100);
-
-  const current = openDay ? JOURNEY_DAYS.find((d) => d.day === openDay) : null;
 
   return (
     <MobileShell>
@@ -60,13 +57,25 @@ const Journey = () => {
                 <div
                   className={cn(
                     "flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-sm font-bold",
-                    done ? "gradient-primary text-primary-foreground shadow-glow" : locked ? "bg-muted text-muted-foreground" : "bg-secondary text-secondary-foreground"
+                    done
+                      ? "gradient-primary text-primary-foreground shadow-glow"
+                      : locked
+                        ? "bg-muted text-muted-foreground"
+                        : "bg-secondary text-secondary-foreground"
                   )}
                 >
-                  {done ? <Check className="h-5 w-5" strokeWidth={3} /> : locked ? <Lock className="h-4 w-4" /> : d.day}
+                  {done ? (
+                    <Check className="h-5 w-5" strokeWidth={3} />
+                  ) : locked ? (
+                    <Lock className="h-4 w-4" />
+                  ) : (
+                    d.day
+                  )}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Dia {d.day}</p>
+                  <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                    Dia {d.day}
+                  </p>
                   <p className="truncate text-sm font-semibold">{d.title}</p>
                 </div>
                 <Target className={cn("h-4 w-4", done ? "text-primary" : "text-muted-foreground")} />
@@ -83,43 +92,19 @@ const Journey = () => {
           {JOURNEY_EXTRA.subtitle}
         </div>
         <h3 className="text-base font-bold">{JOURNEY_EXTRA.title}</h3>
-        <p className="mt-1.5 text-sm leading-snug text-muted-foreground">{JOURNEY_EXTRA.description}</p>
+        <p className="mt-1.5 text-sm leading-snug text-muted-foreground">
+          {JOURNEY_EXTRA.description}
+        </p>
       </section>
 
+      {/* Dia 1: experiência rica própria */}
       <Day1Experience open={openDay === 1} onOpenChange={(o) => !o && setOpenDay(null)} />
 
-      <Sheet open={openDay !== null && openDay !== 1} onOpenChange={(o) => !o && setOpenDay(null)}>
-        <SheetContent side="bottom" className="rounded-t-3xl border-0 pb-8">
-          {current && (
-            <>
-              <SheetHeader className="text-left">
-                <p className="text-xs font-semibold uppercase tracking-wider text-primary">Dia {current.day}</p>
-                <SheetTitle className="text-2xl">{current.title}</SheetTitle>
-              </SheetHeader>
-              <div className="mt-4 space-y-4">
-                <div className="rounded-2xl bg-secondary p-4">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Missão</p>
-                  <p className="mt-1 font-semibold">{current.mission}</p>
-                </div>
-                <p className="text-sm leading-relaxed text-muted-foreground">{current.description}</p>
-                <Button
-                  size="lg"
-                  className={cn(
-                    "h-14 w-full rounded-2xl text-base font-semibold",
-                    isCompleted(current.day) ? "bg-secondary text-secondary-foreground hover:bg-secondary/80" : "gradient-primary"
-                  )}
-                  onClick={() => {
-                    toggleDay(current.day);
-                    setOpenDay(null);
-                  }}
-                >
-                  {isCompleted(current.day) ? "Desmarcar dia" : "Concluir dia"}
-                </Button>
-              </div>
-            </>
-          )}
-        </SheetContent>
-      </Sheet>
+      {/* Dias 2-21: experiência prática gamificada */}
+      <DayActionExperience
+        day={openDay !== null && openDay !== 1 ? openDay : null}
+        onOpenChange={(o) => !o && setOpenDay(null)}
+      />
     </MobileShell>
   );
 };
