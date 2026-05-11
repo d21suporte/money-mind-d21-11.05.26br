@@ -698,8 +698,8 @@ function CatCard({
 
         {/* Coluna direita: título + subtítulo, dica no meio, contador no rodapé */}
         <div className="flex min-w-0 flex-1 flex-col">
-          <div className="min-w-0 pr-24">
-            <p className="truncate text-lg font-extrabold uppercase leading-tight tracking-tight">
+          <div className="min-w-0 pr-28">
+            <p className="truncate text-[15px] font-extrabold uppercase leading-tight tracking-tight">
               {label}
             </p>
             <p className="mt-0.5 truncate text-[11px] text-muted-foreground">{sub}</p>
