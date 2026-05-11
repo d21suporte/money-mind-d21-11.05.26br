@@ -588,6 +588,8 @@ function CatCard({
   image,
   color,
   label,
+  subtitle,
+  tip,
   count,
   countLabel,
   addLabel,
@@ -599,6 +601,8 @@ function CatCard({
   image: string;
   color: string;
   label: string;
+  subtitle?: string;
+  tip?: string;
   count: number;
   countLabel: string;
   addLabel: string;
@@ -609,10 +613,19 @@ function CatCard({
 }) {
   const iconBtn =
     "flex h-7 w-7 items-center justify-center rounded-full text-muted-foreground hover:bg-muted";
+  const sub = subtitle ?? `Cadastre seus ativos de ${label}`;
   return (
-    <div className="relative rounded-2xl border border-border bg-card p-3 shadow-soft">
+    <div className="relative rounded-2xl border border-border bg-card p-3 pl-3 shadow-soft">
       {/* Ações no canto superior direito */}
       <div className="absolute right-2 top-2 z-10 flex items-center gap-0.5">
+        <button
+          type="button"
+          aria-label={addLabel}
+          onClick={onAdd}
+          className="mr-1 flex h-7 w-7 items-center justify-center rounded-full bg-emerald-500 text-white shadow-md hover:bg-emerald-600"
+        >
+          <Plus className="h-4 w-4" strokeWidth={3} />
+        </button>
         <button
           type="button"
           aria-label={`Áudio de ${label}`}
@@ -639,11 +652,7 @@ function CatCard({
         </button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <button
-              type="button"
-              aria-label={`Menu ${label}`}
-              className={iconBtn}
-            >
+            <button type="button" aria-label={`Menu ${label}`} className={iconBtn}>
               <MoreVertical className="h-4 w-4" />
             </button>
           </DropdownMenuTrigger>
@@ -658,30 +667,52 @@ function CatCard({
             <DropdownMenuItem onClick={onOpen}>Ver todos os lançamentos</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-        <button
-          type="button"
-          aria-label={addLabel}
-          onClick={onAdd}
-          className="ml-1 flex h-7 w-7 items-center justify-center rounded-full bg-emerald-500 text-white shadow-md hover:bg-emerald-600"
-        >
-          <Plus className="h-4 w-4" />
-        </button>
       </div>
 
-      {/* Foto de perfil + título + subtítulo (estilo Instagram) */}
-      <div className="flex h-20 items-center gap-3">
-        <div className="relative h-full aspect-square shrink-0">
+      <div className="flex gap-3">
+        {/* Imagem do ativo (quadrada com cantos arredondados, sombra projetada à direita) */}
+        <button
+          type="button"
+          onClick={onOpen}
+          aria-label={`Abrir ${label}`}
+          className="shrink-0 self-stretch"
+        >
           <img
             src={image}
             alt={label}
-            className="h-full w-full rounded-full object-cover shadow-[4px_3px_10px_-2px_rgba(0,0,0,0.45)] ring-1 ring-border"
+            className="h-24 w-24 rounded-2xl object-cover shadow-[6px_4px_14px_-3px_rgba(0,0,0,0.5)] ring-1 ring-border"
           />
-        </div>
-        <div className="min-w-0 flex-1 pt-7">
-          <p className="truncate text-base font-extrabold leading-tight">{label}</p>
-          <p className="mt-0.5 truncate text-[11px] text-muted-foreground">
-            <span className={cn("font-bold", COUNT_COLOR[color])}>{count}</span> {countLabel}
-          </p>
+        </button>
+
+        {/* Coluna direita: título + subtítulo, dica no meio, contador no rodapé */}
+        <div className="flex min-w-0 flex-1 flex-col">
+          <div className="min-w-0 pr-24">
+            <p className="truncate text-lg font-extrabold uppercase leading-tight tracking-tight">
+              {label}
+            </p>
+            <p className="mt-0.5 truncate text-[11px] text-muted-foreground">{sub}</p>
+          </div>
+
+          {/* Dica (preenche o espaço vazio) */}
+          {tip && (
+            <div className="mt-1.5 flex items-start gap-1.5 rounded-lg bg-muted/50 px-2 py-1.5">
+              <Lightbulb
+                className={cn("h-3.5 w-3.5 shrink-0 mt-px", COUNT_COLOR[color])}
+                strokeWidth={2.2}
+              />
+              <p className="text-[10.5px] leading-snug text-muted-foreground">{tip}</p>
+            </div>
+          )}
+
+          {/* Contador no canto inferior direito */}
+          <div className="mt-auto flex items-end justify-end pt-1 text-right">
+            <div>
+              <p className={cn("text-3xl font-extrabold leading-none", COUNT_COLOR[color])}>
+                {count}
+              </p>
+              <p className="mt-1 text-[10px] text-muted-foreground">{countLabel}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
