@@ -388,7 +388,7 @@ const MeuNegocio = () => {
                 count={sales.filter((s) => s.status === "Pago").length}
                 countLabel="Vendas realizadas"
                 addLabel="Adicionar Venda"
-                onOpen={() => setSaleOpen(true)}
+                onOpen={() => setCat("vendas")}
                 onAdd={() => setSaleOpen(true)}
               />
             </div>
