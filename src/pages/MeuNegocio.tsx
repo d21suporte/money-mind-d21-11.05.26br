@@ -347,8 +347,10 @@ const MeuNegocio = () => {
                 image={catProdutos}
                 color="amber"
                 label="Produtos"
+                subtitle="Cadastre seus ativos de Produtos"
+                tip="Produto com margem acima de 30% acelera sua liberdade financeira."
                 count={products.length}
-                countLabel="ativos cadastrados"
+                countLabel="Ativos cadastrados"
                 addLabel="Adicionar Produto"
                 onOpen={() => setCat("produtos")}
                 onAdd={() => setAddOpen("produtos")}
@@ -357,8 +359,10 @@ const MeuNegocio = () => {
                 image={catServicos}
                 color="blue"
                 label="Serviços"
+                subtitle="Cadastre seus ativos de Serviços"
+                tip="Serviços recorrentes geram renda previsível todos os meses."
                 count={services.length}
-                countLabel="ativos cadastrados"
+                countLabel="Ativos cadastrados"
                 addLabel="Adicionar Serviço"
                 onOpen={() => setCat("servicos")}
                 onAdd={() => setAddOpen("servicos")}
@@ -367,8 +371,10 @@ const MeuNegocio = () => {
                 image={catInfo}
                 color="violet"
                 label="Infoprodutos"
+                subtitle="Cadastre seus ativos de Infoprodutos"
+                tip="Infoproduto é escalável: vende enquanto você dorme."
                 count={infos.length}
-                countLabel="ativos cadastrados"
+                countLabel="Ativos cadastrados"
                 addLabel="Adicionar Infoproduto"
                 onOpen={() => setCat("info")}
                 onAdd={() => setAddOpen("info")}
@@ -377,8 +383,10 @@ const MeuNegocio = () => {
                 image={catVendas}
                 color="sales"
                 label="Vendas"
+                subtitle="Registre cada venda dos seus ativos"
+                tip="Quem mede vende mais. Lance toda venda para ver o que funciona."
                 count={sales.filter((s) => s.status === "Pago").length}
-                countLabel="vendas realizadas"
+                countLabel="Vendas realizadas"
                 addLabel="Adicionar Venda"
                 onOpen={() => setSaleOpen(true)}
                 onAdd={() => setSaleOpen(true)}
