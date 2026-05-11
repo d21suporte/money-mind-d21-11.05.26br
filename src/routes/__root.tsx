@@ -7,6 +7,11 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { useEffect } from "react";
+import { runDataMigrations } from "@/lib/dataMigration";
 
 import appCss from "../styles.css?url";
 
@@ -72,20 +77,33 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "D21 App" },
+      { name: "description", content: "E se 21 Dias forem tudo que separa você da vida que sempre sonhou? Entre agora no App D21, um desafio de 21 dias para mudar sua vida." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { name: "theme-color", content: "#0a0a0a" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
+      { name: "apple-mobile-web-app-title", content: "D21 App" },
+      { property: "og:title", content: "D21 App" },
+      { property: "og:description", content: "E se 21 Dias forem tudo que separa você da vida que sempre sonhou? Entre agora no App D21, um desafio de 21 dias para mudar sua vida." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "D21 App" },
+      { name: "twitter:description", content: "E se 21 Dias forem tudo que separa você da vida que sempre sonhou? Entre agora no App D21, um desafio de 21 dias para mudar sua vida." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/2mcz8fGlY3fW2qZay6GZyXLf8N02/social-images/social-1778207742099-sociald21.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/2mcz8fGlY3fW2qZay6GZyXLf8N02/social-images/social-1778207742099-sociald21.webp" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
+      { rel: "manifest", href: "/manifest.json" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+      { rel: "apple-touch-icon", sizes: "192x192", href: "/icon-192.png" },
+      { rel: "apple-touch-icon", sizes: "512x512", href: "/icon-512.png" },
     ],
   }),
   shellComponent: RootShell,
@@ -110,10 +128,15 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  useEffect(() => { runDataMigrations(); }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <Outlet />
+      </TooltipProvider>
     </QueryClientProvider>
   );
 }

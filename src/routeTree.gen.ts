@@ -9,8 +9,56 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VitrineRouteImport } from './routes/vitrine'
+import { Route as RelatoriosRouteImport } from './routes/relatorios'
+import { Route as PerfilRouteImport } from './routes/perfil'
+import { Route as MeuNegocioRouteImport } from './routes/meu-negocio'
+import { Route as JornadaRouteImport } from './routes/jornada'
+import { Route as CalculadoraRouteImport } from './routes/calculadora'
+import { Route as BemVindoRouteImport } from './routes/bem-vindo'
+import { Route as AudiosRouteImport } from './routes/audios'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VitrineRoute = VitrineRouteImport.update({
+  id: '/vitrine',
+  path: '/vitrine',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RelatoriosRoute = RelatoriosRouteImport.update({
+  id: '/relatorios',
+  path: '/relatorios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PerfilRoute = PerfilRouteImport.update({
+  id: '/perfil',
+  path: '/perfil',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MeuNegocioRoute = MeuNegocioRouteImport.update({
+  id: '/meu-negocio',
+  path: '/meu-negocio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JornadaRoute = JornadaRouteImport.update({
+  id: '/jornada',
+  path: '/jornada',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalculadoraRoute = CalculadoraRouteImport.update({
+  id: '/calculadora',
+  path: '/calculadora',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BemVindoRoute = BemVindoRouteImport.update({
+  id: '/bem-vindo',
+  path: '/bem-vindo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AudiosRoute = AudiosRouteImport.update({
+  id: '/audios',
+  path: '/audios',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +67,144 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/audios': typeof AudiosRoute
+  '/bem-vindo': typeof BemVindoRoute
+  '/calculadora': typeof CalculadoraRoute
+  '/jornada': typeof JornadaRoute
+  '/meu-negocio': typeof MeuNegocioRoute
+  '/perfil': typeof PerfilRoute
+  '/relatorios': typeof RelatoriosRoute
+  '/vitrine': typeof VitrineRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/audios': typeof AudiosRoute
+  '/bem-vindo': typeof BemVindoRoute
+  '/calculadora': typeof CalculadoraRoute
+  '/jornada': typeof JornadaRoute
+  '/meu-negocio': typeof MeuNegocioRoute
+  '/perfil': typeof PerfilRoute
+  '/relatorios': typeof RelatoriosRoute
+  '/vitrine': typeof VitrineRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/audios': typeof AudiosRoute
+  '/bem-vindo': typeof BemVindoRoute
+  '/calculadora': typeof CalculadoraRoute
+  '/jornada': typeof JornadaRoute
+  '/meu-negocio': typeof MeuNegocioRoute
+  '/perfil': typeof PerfilRoute
+  '/relatorios': typeof RelatoriosRoute
+  '/vitrine': typeof VitrineRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/audios'
+    | '/bem-vindo'
+    | '/calculadora'
+    | '/jornada'
+    | '/meu-negocio'
+    | '/perfil'
+    | '/relatorios'
+    | '/vitrine'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/audios'
+    | '/bem-vindo'
+    | '/calculadora'
+    | '/jornada'
+    | '/meu-negocio'
+    | '/perfil'
+    | '/relatorios'
+    | '/vitrine'
+  id:
+    | '__root__'
+    | '/'
+    | '/audios'
+    | '/bem-vindo'
+    | '/calculadora'
+    | '/jornada'
+    | '/meu-negocio'
+    | '/perfil'
+    | '/relatorios'
+    | '/vitrine'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AudiosRoute: typeof AudiosRoute
+  BemVindoRoute: typeof BemVindoRoute
+  CalculadoraRoute: typeof CalculadoraRoute
+  JornadaRoute: typeof JornadaRoute
+  MeuNegocioRoute: typeof MeuNegocioRoute
+  PerfilRoute: typeof PerfilRoute
+  RelatoriosRoute: typeof RelatoriosRoute
+  VitrineRoute: typeof VitrineRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/vitrine': {
+      id: '/vitrine'
+      path: '/vitrine'
+      fullPath: '/vitrine'
+      preLoaderRoute: typeof VitrineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/relatorios': {
+      id: '/relatorios'
+      path: '/relatorios'
+      fullPath: '/relatorios'
+      preLoaderRoute: typeof RelatoriosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/perfil': {
+      id: '/perfil'
+      path: '/perfil'
+      fullPath: '/perfil'
+      preLoaderRoute: typeof PerfilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/meu-negocio': {
+      id: '/meu-negocio'
+      path: '/meu-negocio'
+      fullPath: '/meu-negocio'
+      preLoaderRoute: typeof MeuNegocioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jornada': {
+      id: '/jornada'
+      path: '/jornada'
+      fullPath: '/jornada'
+      preLoaderRoute: typeof JornadaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calculadora': {
+      id: '/calculadora'
+      path: '/calculadora'
+      fullPath: '/calculadora'
+      preLoaderRoute: typeof CalculadoraRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bem-vindo': {
+      id: '/bem-vindo'
+      path: '/bem-vindo'
+      fullPath: '/bem-vindo'
+      preLoaderRoute: typeof BemVindoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/audios': {
+      id: '/audios'
+      path: '/audios'
+      fullPath: '/audios'
+      preLoaderRoute: typeof AudiosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,7 +217,25 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AudiosRoute: AudiosRoute,
+  BemVindoRoute: BemVindoRoute,
+  CalculadoraRoute: CalculadoraRoute,
+  JornadaRoute: JornadaRoute,
+  MeuNegocioRoute: MeuNegocioRoute,
+  PerfilRoute: PerfilRoute,
+  RelatoriosRoute: RelatoriosRoute,
+  VitrineRoute: VitrineRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

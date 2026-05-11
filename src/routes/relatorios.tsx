@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import Home from "@/pages/Home";
+import Reports from "@/pages/Reports";
 import { RequireOnboarding } from "@/components/RequireOnboarding";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/relatorios")({
   component: () => (
     <RequireOnboarding>
-      <Home />
+      <Reports />
     </RequireOnboarding>
   ),
 });

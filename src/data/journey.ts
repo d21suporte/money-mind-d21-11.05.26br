@@ -1,0 +1,25 @@
+import { JourneyDay } from "@/types";
+
+export const JOURNEY_DAYS: JourneyDay[] = [
+  { day: 1, title: "Planeje antes que fique insustentável", mission: "Comece seu Orçamento Consciente (Cerbasi)", description: "Capítulo 1 — Gustavo Cerbasi. Faça seu snapshot, registre entradas e saídas, e classifique cada gasto em Essencial, Supérfluo ou Meta. Você não controla o que não enxerga." },
+  { day: 2, title: "Olhar atento", mission: "Registrar todos os gastos do dia", description: "Não deixe nada passar. Cada centavo conta na sua jornada." },
+  { day: 3, title: "Faça o dinheiro trabalhar por você", mission: "Diversifique suas fontes de renda (Tiago Nigro)", description: "Capítulo 3 — Tiago Nigro (Primo Rico). Mapeie suas fontes (ativa, passiva, automática), defina o % da renda que vai virar investimento e entenda a Pirâmide Financeira: Reserva → Proteção → Crescimento." },
+  { day: 4, title: "Ativos vs Passivos", mission: "Separe o que enriquece do que empobrece (Kiyosaki)", description: "Capítulo 4 — Robert Kiyosaki (Pai Rico, Pai Pobre). Liste seus bens e classifique cada um: ATIVO coloca dinheiro no seu bolso, PASSIVO tira. Descubra seu Fluxo Patrimonial real e comprometa-se a adquirir o próximo ativo." },
+  { day: 5, title: "Entradas", mission: "Registrar todas as suas entradas", description: "Anote salário, freelas, vendas. Saber quanto entra é tão importante quanto o que sai." },
+  { day: 6, title: "O essencial", mission: "Identificar gastos essenciais", description: "Marque mentalmente quais gastos são essenciais (moradia, comida, transporte)." },
+  { day: 7, title: "Primeira semana", mission: "Revisão da semana 1", description: "Compare entradas e saídas. Você está no positivo ou negativo?" },
+  { day: 8, title: "Supérfluos", mission: "Identificar gastos supérfluos", description: "Liste 3 gastos que poderiam ser cortados sem afetar sua qualidade de vida." },
+  { day: 9, title: "Meta de economia", mission: "Definir uma meta semanal", description: "Estabeleça um valor que você pretende economizar nesta semana." },
+  { day: 10, title: "Dia consciente", mission: "Passar o dia sem gastos supérfluos", description: "Hoje, apenas o essencial. Sinta o poder da escolha consciente." },
+  { day: 11, title: "Planejamento", mission: "Planejar gastos da semana", description: "Antecipe os gastos que virão e evite surpresas." },
+  { day: 12, title: "Renegociação", mission: "Revisar uma assinatura", description: "Cancele ou renegocie um serviço que você quase não usa." },
+  { day: 13, title: "Comparação", mission: "Comparar gastos com a semana 1", description: "Houve evolução? O quanto você cresceu até aqui?" },
+  { day: 14, title: "Segunda semana", mission: "Revisão da semana 2", description: "Compare as duas semanas e celebre o progresso." },
+  { day: 15, title: "Reserva", mission: "Separar um valor para emergências", description: "Mesmo que seja pouco, comece sua reserva de emergência hoje." },
+  { day: 16, title: "Sonhos", mission: "Definir um objetivo financeiro", description: "Qual seu próximo grande objetivo? Viagem? Casa? Curso?" },
+  { day: 17, title: "Investimento mental", mission: "Aprender sobre um tipo de investimento", description: "Pesquise sobre Tesouro Direto, CDB ou Fundos. Conhecimento rende juros." },
+  { day: 18, title: "Compras inteligentes", mission: "Comparar preços antes de comprar", description: "Antes de qualquer compra hoje, compare preços em pelo menos 2 lugares." },
+  { day: 19, title: "Controle total", mission: "Atualizar todas as transações pendentes", description: "Coloque tudo em dia. Sua jornada está quase no fim." },
+  { day: 20, title: "Celebração", mission: "Reconhecer seu progresso", description: "Você chegou ao penúltimo dia. Reconheça o quanto evoluiu." },
+  { day: 21, title: "Revisão final", mission: "Revisão completa dos 21 dias", description: "Analise os gráficos, releia suas categorias e prepare-se para continuar a jornada." },
+];
