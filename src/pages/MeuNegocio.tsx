@@ -622,7 +622,7 @@ function CatCard({
 }) {
   const iconBtn =
     "flex h-7 w-7 items-center justify-center rounded-full text-muted-foreground hover:bg-muted";
-  const sub = subtitle ?? `Cadastre seus ativos de ${label}`;
+  const sub = subtitle ?? `Cadastro de ${label}`;
   return (
     <div className="relative rounded-2xl border border-border bg-card p-3 pl-3 shadow-soft">
       {/* Ações no canto superior direito */}
