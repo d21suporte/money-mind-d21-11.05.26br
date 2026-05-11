@@ -606,90 +606,79 @@ function CatCard({
   const iconBtn =
     "flex h-7 w-7 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-600 hover:bg-emerald-500/20";
   return (
-    <div className="relative flex flex-col rounded-2xl border border-border bg-card p-3 shadow-soft">
-      {/* Topo: ícone + ações */}
-      <div className="flex items-start justify-between gap-1.5">
-        <div
-          className={cn(
-            "flex h-10 w-10 items-center justify-center rounded-xl shrink-0",
-            CAT_COLORS[color],
-          )}
-        >
-          {icon}
-        </div>
-        <div className="flex items-center gap-1">
-          <button
-            type="button"
-            aria-label={`Áudio de ${label}`}
-            onClick={() => toast.info(`Áudio-tutorial de ${label}: em breve`)}
-            className={iconBtn}
-          >
-            <Volume2 className="h-3.5 w-3.5" />
-          </button>
-          <button
-            type="button"
-            aria-label={`Ajuda ${label}`}
-            onClick={() => toast.info(`Ajuda sobre ${label}: em breve`)}
-            className={iconBtn}
-          >
-            <HelpCircle className="h-3.5 w-3.5" />
-          </button>
-          <button
-            type="button"
-            aria-label={`Ver todos ${label}`}
-            onClick={onOpen}
-            className={iconBtn}
-          >
-            <Eye className="h-3.5 w-3.5" />
-          </button>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <button
-                type="button"
-                aria-label={`Menu ${label}`}
-                className="flex h-7 w-7 items-center justify-center rounded-full text-muted-foreground hover:bg-muted"
-              >
-                <MoreVertical className="h-4 w-4" />
-              </button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={onAdd}>Adicionar</DropdownMenuItem>
-              {onEdit && <DropdownMenuItem onClick={onEdit}>Editar</DropdownMenuItem>}
-              {onDelete && (
-                <DropdownMenuItem onClick={onDelete} className="text-red-600">
-                  Excluir
-                </DropdownMenuItem>
-              )}
-              <DropdownMenuItem onClick={onOpen}>Ver todos os lançamentos</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
+    <div className="relative flex items-center gap-3 rounded-2xl border border-border bg-card p-3 shadow-soft">
+      {/* Ícone + Título em destaque */}
+      <div
+        className={cn(
+          "flex h-12 w-12 shrink-0 items-center justify-center rounded-xl",
+          CAT_COLORS[color],
+        )}
+      >
+        {icon}
       </div>
 
-      {/* Centro: título + contador + descrição */}
-      <p className="mt-2 text-sm font-extrabold">{label}</p>
-      <div className="mt-3 flex flex-col items-center">
-        <p className={cn("text-3xl font-extrabold leading-none", COUNT_COLOR[color])}>{count}</p>
-        <p className="mt-1.5 text-[11px] text-muted-foreground">{countLabel}</p>
-      </div>
-
-      {/* Rodapé: botão adicionar */}
-      <div className="mt-4 flex items-center gap-2 border-t border-border/60 pt-3">
+      <div className="min-w-0 flex-1">
+        <div className="flex items-baseline gap-2">
+          <p className="truncate text-base font-extrabold leading-tight">{label}</p>
+          <p className={cn("text-lg font-extrabold leading-none", COUNT_COLOR[color])}>{count}</p>
+        </div>
+        <p className="mt-0.5 truncate text-[11px] text-muted-foreground">{countLabel}</p>
         <button
           type="button"
           onClick={onAdd}
-          aria-label={addLabel}
-          className="flex h-7 w-7 items-center justify-center rounded-full bg-emerald-500 text-white hover:bg-emerald-600"
+          className="mt-1 text-[11px] font-bold text-emerald-600 hover:underline"
         >
-          <Plus className="h-4 w-4" />
+          + {addLabel}
+        </button>
+      </div>
+
+      {/* Ações */}
+      <div className="flex shrink-0 items-center gap-1">
+        <button
+          type="button"
+          aria-label={`Áudio de ${label}`}
+          onClick={() => toast.info(`Áudio-tutorial de ${label}: em breve`)}
+          className={iconBtn}
+        >
+          <Volume2 className="h-3.5 w-3.5" />
         </button>
         <button
           type="button"
-          onClick={onAdd}
-          className="text-[11px] font-bold text-emerald-600 hover:underline"
+          aria-label={`Ajuda ${label}`}
+          onClick={() => toast.info(`Ajuda sobre ${label}: em breve`)}
+          className={iconBtn}
         >
-          {addLabel}
+          <HelpCircle className="h-3.5 w-3.5" />
         </button>
+        <button
+          type="button"
+          aria-label={`Ver todos ${label}`}
+          onClick={onOpen}
+          className={iconBtn}
+        >
+          <Eye className="h-3.5 w-3.5" />
+        </button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button
+              type="button"
+              aria-label={`Menu ${label}`}
+              className="flex h-7 w-7 items-center justify-center rounded-full text-muted-foreground hover:bg-muted"
+            >
+              <MoreVertical className="h-4 w-4" />
+            </button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem onClick={onAdd}>Adicionar</DropdownMenuItem>
+            {onEdit && <DropdownMenuItem onClick={onEdit}>Editar</DropdownMenuItem>}
+            {onDelete && (
+              <DropdownMenuItem onClick={onDelete} className="text-red-600">
+                Excluir
+              </DropdownMenuItem>
+            )}
+            <DropdownMenuItem onClick={onOpen}>Ver todos os lançamentos</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </div>
   );
