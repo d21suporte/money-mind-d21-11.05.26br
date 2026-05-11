@@ -213,7 +213,7 @@ const MeuNegocio = () => {
   const [products, setProducts] = useStorage<Product[]>("d21.mn.products", []);
   const [services, setServices] = useStorage<Service[]>("d21.mn.services", []);
   const [infos, setInfos] = useStorage<Infoproduct[]>("d21.mn.infoproducts", []);
-  const [sales] = useStorage<Sale[]>("d21.mn.sales", []);
+  const [sales, setSales] = useStorage<Sale[]>("d21.mn.sales", []);
   const [extraPlatforms] = useStorage<string[]>("d21.mn.platforms", []);
   const platforms = [...FIXED_PLATFORMS, ...extraPlatforms];
 
