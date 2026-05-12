@@ -146,9 +146,10 @@ export function useStorage<T>(key: string, initialValue: T) {
     (next) => {
       setValueState((prev) => {
         const resolved = typeof next === "function" ? (next as (p: T) => T)(prev) : next;
-        // Notifica as outras instâncias com o valor resolvido.
-        emit(storageKey, resolved);
         hadLocalValueRef.current = true;
+        // Notifica outras instâncias APÓS o commit, para evitar
+        // "setState during render" e garantir propagação consistente.
+        queueMicrotask(() => emit(storageKey, resolved));
         return resolved;
       });
     },
