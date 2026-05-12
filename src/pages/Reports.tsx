@@ -32,9 +32,9 @@ import {
   Wrench,
   GraduationCap,
   Briefcase,
-  Users,
   Target,
   Pencil,
+  ShoppingCart,
 } from "lucide-react";
 import { JOURNEY_DAYS } from "@/data/journey";
 
