@@ -40,6 +40,7 @@ export interface JourneyDay {
 export interface User {
   name: string;
   email: string;
+  avatar?: string;
 }
 
 // Legacy flat list (kept for backward compatibility)
