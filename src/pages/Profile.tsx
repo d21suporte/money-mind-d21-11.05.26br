@@ -19,6 +19,26 @@ const Profile = () => {
   const { transactions } = useTransactions();
   const navigate = useNavigate();
   const { needRefresh, checking, checkForUpdate, applyUpdate } = usePWAUpdate();
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
+
+  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (!file.type.startsWith("image/")) {
+      toast.error("Selecione um arquivo de imagem");
+      return;
+    }
+    if (file.size > 3 * 1024 * 1024) {
+      toast.error("Imagem muito grande (máx. 3MB)");
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      setUser({ ...user, avatar: reader.result as string });
+      toast.success("Foto de perfil atualizada!");
+    };
+    reader.readAsDataURL(file);
+  };
 
   const pinExists = hasPinFor(user.email);
   const [showPinForm, setShowPinForm] = useState(false);
