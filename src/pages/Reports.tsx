@@ -38,18 +38,6 @@ import {
 } from "lucide-react";
 import { JOURNEY_DAYS } from "@/data/journey";
 
-type Customer = {
-  id: string;
-  name: string;
-  email?: string;
-  phone?: string;
-  doc?: string;
-  createdAt: string;
-  lastSaleAt: string;
-  salesCount: number;
-  totalSpent: number;
-};
-
 type BizSale = {
   id: string;
   category?: "produtos" | "servicos" | "info";
