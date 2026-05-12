@@ -1,5 +1,5 @@
 import { NavLink } from "@/lib/router-compat";
-import { Home, Target, BarChart3, User, Plus } from "lucide-react";
+import { Home, Target, BarChart3, Briefcase, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AddTransactionDialog } from "./AddTransactionDialog";
 
@@ -10,7 +10,7 @@ const leftTabs = [
 
 const rightTabs = [
   { to: "/relatorios", label: "Relatórios", icon: BarChart3 },
-  { to: "/perfil", label: "Perfil", icon: User },
+  { to: "/meu-negocio", label: "Meu Negócio", icon: Briefcase },
 ];
 
 function TabLink({ to, label, icon: Icon, end }: { to: string; label: string; icon: typeof Home; end?: boolean }) {
