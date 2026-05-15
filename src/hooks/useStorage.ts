@@ -106,7 +106,7 @@ export function useStorage<T>(key: string, initialValue: T) {
       const raw = localStorage.getItem(initialStorageKey);
       const parsed = raw ? (JSON.parse(raw) as T) : initialRef.current;
       localTrustedRef.current = raw != null && isTrustworthyLocalValue(parsed, initialRef.current, initialStorageKey);
-      cloudReadyRef.current = localTrustedRef.current;
+      cloudReadyRef.current = localTrustedRef.current && !initialStorageKey.endsWith("d21.user");
       return parsed;
     } catch {
       return initialRef.current;
@@ -144,7 +144,7 @@ export function useStorage<T>(key: string, initialValue: T) {
     }
 
     localTrustedRef.current = localTrusted;
-    cloudReadyRef.current = localTrusted;
+    cloudReadyRef.current = localTrusted && !storageKey.endsWith("d21.user");
     dirtyRef.current = false;
     cloudSaveBlockedRef.current = false;
 
@@ -213,7 +213,7 @@ export function useStorage<T>(key: string, initialValue: T) {
         const parsed = raw ? (JSON.parse(raw) as T) : initialRef.current;
         setStorageKey(nextKey);
         localTrustedRef.current = raw != null && isTrustworthyLocalValue(parsed, initialRef.current, nextKey);
-        cloudReadyRef.current = localTrustedRef.current;
+        cloudReadyRef.current = localTrustedRef.current && !nextKey.endsWith("d21.user");
         dirtyRef.current = false;
         cloudSaveBlockedRef.current = false;
         setValueState(parsed);
