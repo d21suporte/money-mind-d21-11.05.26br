@@ -80,7 +80,7 @@ const Reports = () => {
   const day1 = useDay1();
 
   const bizSummary = useMemo(() => {
-    const paid = bizSales.filter((s) => isPaidBusinessSale(s));
+    const paid = bizSales.filter(isPaidBusinessSale);
     const faturamento = getBusinessSalesTotal(paid);
     const lucro = paid.reduce((s, x) => s + (Number(x.profit ?? x.amount) || 0), 0);
     const byCatMap = new Map<string, { value: number; count: number }>();
