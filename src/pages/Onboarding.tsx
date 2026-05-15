@@ -242,10 +242,18 @@ const Onboarding = () => {
     const first = getFirstName(trimmedName);
     setActiveEmail(trimmedEmail);
     const ns = `u:${trimmedEmail.toLowerCase()}:`;
+    let previousUser: Record<string, unknown> = {};
+    try {
+      const rawUser = localStorage.getItem(`${ns}d21.user`);
+      previousUser = rawUser ? JSON.parse(rawUser) : {};
+    } catch {
+      previousUser = {};
+    }
+    const nextUser = { ...previousUser, name: trimmedName, email: trimmedEmail };
     try {
       localStorage.setItem(
         `${ns}d21.user`,
-        JSON.stringify({ name: trimmedName, email: trimmedEmail })
+        JSON.stringify(nextUser)
       );
       localStorage.setItem(`${ns}d21.firstName`, JSON.stringify(first));
       localStorage.setItem(`${ns}d21.onboarded`, JSON.stringify(true));
@@ -258,7 +266,7 @@ const Onboarding = () => {
       /* ignore */
     }
     window.dispatchEvent(new Event("d21:session-change"));
-    setUser({ name: trimmedName, email: trimmedEmail });
+    setUser(nextUser as { name: string; email: string; avatar?: string });
     setFirstName(first);
     setOnboarded(true);
     navigate("/", { replace: true });
