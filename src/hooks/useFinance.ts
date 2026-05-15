@@ -1,6 +1,7 @@
 import { useMemo, useCallback } from "react";
 import { Transaction, User, TransactionType, CATEGORY_CATALOG, Goal } from "@/types";
 import { useStorage } from "./useStorage";
+import { getBusinessSalesTotal } from "@/lib/businessFinance";
 
 type CustomCats = Record<TransactionType, Record<string, string[]>>;
 const EMPTY_CUSTOM: CustomCats = { income: {}, expense: {} };
@@ -77,6 +78,8 @@ export function useCategories() {
 
 export function useTransactions() {
   const [transactions, setTransactions] = useStorage<Transaction[]>("d21.transactions", []);
+  const [bizSales] = useStorage<unknown[]>("d21.mn.sales", []);
+  const [incorporateBusinessSales] = useStorage<boolean>("d21.mn.incorporate", false);
 
   const addTransaction = useCallback((tx: Omit<Transaction, "id" | "createdAt">) => {
     const newTx: Transaction = {
@@ -98,8 +101,9 @@ export function useTransactions() {
   const totals = useMemo(() => {
     const income = transactions.filter((t) => t.type === "income").reduce((s, t) => s + t.amount, 0);
     const expense = transactions.filter((t) => t.type === "expense").reduce((s, t) => s + t.amount, 0);
-    return { income, expense, balance: income - expense };
-  }, [transactions]);
+    const businessIncome = incorporateBusinessSales ? getBusinessSalesTotal(bizSales) : 0;
+    return { income: income + businessIncome, expense, balance: income + businessIncome - expense };
+  }, [transactions, bizSales, incorporateBusinessSales]);
 
   return { transactions, addTransaction, removeTransaction, updateTransaction, totals };
 }
