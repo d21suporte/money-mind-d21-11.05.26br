@@ -163,6 +163,10 @@ export function useStorage<T>(key: string, initialValue: T) {
             /* ignore */
           }
           emit(storageKey, next);
+        } else if (!record.found && localTrustedRef.current && isTrustworthyLocalValue(valueRef.current, initialRef.current, storageKey)) {
+          saveRecord({ data: { ownerKey, dataKey: storageKey, data: valueRef.current } }).catch(() => {
+            /* offline or backend unavailable: local data remains saved */
+          });
         }
         cloudReadyRef.current = true;
       })
@@ -174,7 +178,7 @@ export function useStorage<T>(key: string, initialValue: T) {
     return () => {
       cancelled = true;
     };
-  }, [storageKey, loadRecord]);
+  }, [storageKey, loadRecord, saveRecord]);
 
   useEffect(() => {
     if (
